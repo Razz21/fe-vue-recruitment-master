@@ -15,12 +15,16 @@ export default defineNuxtConfig({
 
   devtools: { enabled: true },
   css: ['~/assets/main.css'],
-
   vite: {
     plugins: [
       tailwindcss(),
     ],
   },
-
+  future: {
+    compatibilityVersion: 4,
+  },
+  modules: [
+    '@nuxt/eslint',
+  ],
   compatibilityDate: '2025-03-14',
 });
