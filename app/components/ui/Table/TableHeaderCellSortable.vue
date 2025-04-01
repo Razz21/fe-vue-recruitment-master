@@ -1,5 +1,5 @@
 <template>
-  <TableHeaderCell :size="size" class="cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600">
+  <UiTableHeaderCell :size="size" class="cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600">
     <div class="flex items-center space-x-1">
       <span>
         <slot />
@@ -9,11 +9,10 @@
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
       </svg>
     </div>
-  </TableHeaderCell>
+  </UiTableHeaderCell>
 </template>
 
 <script setup lang="ts">
-import TableHeaderCell from './TableHeaderCell.vue';
 
 defineProps<{
   active: boolean;
