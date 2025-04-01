@@ -4,10 +4,7 @@
       <h2 class="text-lg font-semibold text-blue-800 dark:text-blue-200">
         <span class="mr-2">⭐</span> {{ teamName }} - Recent Form
       </h2>
-      <button class="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 text-sm font-medium"
-        @click="$emit('select-team')">
-        View Full Details
-      </button>
+      <UiActionButton @click="$emit('select-team')">View Full Details</UiActionButton>
     </div>
   </div>
 </template>

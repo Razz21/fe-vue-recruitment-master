@@ -7,5 +7,6 @@
 
 <script setup lang="ts">
 import { useFavoriteTeam } from '~/composables/useFavoriteTeam';
-const { favoriteTeam } = toRefs(useFavoriteTeam())
+
+const { favoriteTeam } = useFavoriteTeam()
 </script>
