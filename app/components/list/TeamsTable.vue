@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden mb-8">
+  <div v-if="filteredAndSortedTeams.length" class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden mb-8">
     <UiTable>
       <template #header>
         <tr>

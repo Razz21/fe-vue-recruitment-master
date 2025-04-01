@@ -10,7 +10,7 @@
     </button>
 
     <!-- Favorite Button in Team Details -->
-    <DetailsFavoriteButton :active="isFavorite(selectedTeamId)" @click.prevent="toggleFavoriteTeam(selectedTeamId)" />
+    <DetailsFavoriteButton :active="isFavorite(selectedTeamId)" @click="toggleFavoriteTeam(selectedTeamId)" />
   </div>
 </template>
 
