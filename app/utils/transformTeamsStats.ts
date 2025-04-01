@@ -6,11 +6,12 @@ export function calculateTeamStats(
   matches: Match[]
 ): TeamStats[] {
   // Create a map to store team stats
-  const teamStats = {} as Record<number, TeamStats>;
+  const teamStats = new Map<number, TeamStats>();
 
   // Initialize stats for each team - ensure points start at exactly 0
   teamsData.forEach((team) => {
-    teamStats[team.id] = {
+    teamStats.set(team.id, {
+      position: 0, // Placeholder for position, will be set later
       ...team,
       points: 0, // Explicitly set to 0 to override any existing value
       wins: 0,
@@ -19,13 +20,13 @@ export function calculateTeamStats(
       goalsFor: 0,
       goalsAgainst: 0,
       recentForm: [],
-    };
+    });
   });
 
   // Process each match to update team stats
   matches.forEach((match) => {
-    const homeTeam = teamStats[match.homeTeamId];
-    const awayTeam = teamStats[match.awayTeamId];
+    const homeTeam = teamStats.get(match.homeTeamId);
+    const awayTeam = teamStats.get(match.awayTeamId);
 
     if (!homeTeam || !awayTeam) return; // Skip if team not found
 
@@ -64,14 +65,14 @@ export function calculateTeamStats(
   });
 
   // Limit recent form to last 5 matches and reverse for display (most recent on right)
-  Object.values(teamStats).forEach((team) => {
+  teamStats.forEach((team) => {
     team.recentForm = team.recentForm.slice(0, 5).reverse();
 
     // Final points calculation to ensure accuracy
     team.points = team.wins * 3 + team.draws;
   });
 
-  return Object.values(teamStats);
+  return [...teamStats.values()]
 }
 
 export const transformTeamsStats = (data: TeamsData) => {
