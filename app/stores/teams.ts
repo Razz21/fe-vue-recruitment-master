@@ -46,6 +46,17 @@ export const useTeamsStore = defineStore('teams', () => {
     allMatches.value = updatedMatches;
   }
 
+  function createMatch(data: Omit<Match, 'id'>) {
+    const id = allMatches.value.length + 1;
+    const newMatches = allMatches.value.concat({ ...data, id });
+
+    teams.value = transformTeamsStats({
+      teams: teams.value,
+      matches: newMatches,
+    });
+    allMatches.value = newMatches;
+  }
+
   const teamsGrouped = computed(() => {
     return teams.value.reduce<Record<number, TeamStats>>((acc, item) => {
       acc[item.id] = item;
@@ -75,6 +86,7 @@ export const useTeamsStore = defineStore('teams', () => {
     allMatches,
     allMatchesGrouped,
     isLoading,
+    createMatch,
     editTeam,
     editMatch,
     fetchTeams,

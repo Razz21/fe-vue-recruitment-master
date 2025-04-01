@@ -22,6 +22,8 @@
       <!-- Match Statistics Summary -->
       <DetailsMatchStatisticsSummary :draws="selectedTeam.draws" :losses="selectedTeam.losses"
         :wins="selectedTeam.wins" />
+      <DetailsRegisterNewMatch />
+
       <!-- All Matches Table -->
       <SharedMatchesTable :matches="selectedTeamMatches" with-actions @edit-match="reveal" />
     </div>
