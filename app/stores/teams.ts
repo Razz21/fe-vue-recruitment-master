@@ -28,12 +28,22 @@ export const useTeamsStore = defineStore('teams', () => {
     }
   };
 
-  function setTeams(teamsData: TeamStats[]) {
-    teams.value = teamsData;
+  function editTeam(id: number, data: Partial<TeamStats>) {
+    const updatedTeams = teams.value.map((team) =>
+      team.id === id ? { ...team, ...data } : team
+    );
+    teams.value = updatedTeams;
   }
 
-  function setAllMatches(matches: Match[]) {
-    allMatches.value = matches;
+  function editMatch(id: number, data: Partial<Match>) {
+    const updatedMatches = allMatches.value.map((match) =>
+      match.id === id ? { ...match, ...data } : match
+    );
+    teams.value = transformTeamsStats({
+      teams: teams.value,
+      matches: updatedMatches,
+    });
+    allMatches.value = updatedMatches;
   }
 
   const teamsGrouped = computed(() => {
@@ -65,8 +75,8 @@ export const useTeamsStore = defineStore('teams', () => {
     allMatches,
     allMatchesGrouped,
     isLoading,
-    setTeams,
-    setAllMatches,
+    editTeam,
+    editMatch,
     fetchTeams,
   };
 });
