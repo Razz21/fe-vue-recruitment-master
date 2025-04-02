@@ -20,12 +20,12 @@ export function useFavoriteTeam() {
 
   const favoriteTeam = computed(() => {
     if (!favoriteTeamId.value || !teamStore.teams.length) return null;
-    return teamStore.teamsGrouped[favoriteTeamId.value];
+    return teamStore.teamsNormalized[favoriteTeamId.value];
   });
 
   const favoriteTeamRecentMatches = computed(() => {
     if (!favoriteTeam.value) return [];
-    const matches = teamStore.allMatchesGrouped[favoriteTeam.value.id] || [];
+    const matches = teamStore.allMatchesNormalized[favoriteTeam.value.id] || [];
     return getTeamMatches(favoriteTeam.value.id, teamStore.teams, matches, 5);
   });
 

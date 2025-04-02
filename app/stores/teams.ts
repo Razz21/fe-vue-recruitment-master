@@ -57,14 +57,14 @@ export const useTeamsStore = defineStore('teams', () => {
     allMatches.value = newMatches;
   }
 
-  const teamsGrouped = computed(() => {
+  const teamsNormalized = computed(() => {
     return teams.value.reduce<Record<number, TeamStats>>((acc, item) => {
       acc[item.id] = item;
       return acc;
     }, {});
   });
 
-  const allMatchesGrouped = computed(() => {
+  const allMatchesNormalized = computed(() => {
     return allMatches.value.reduce<Record<number, Match[]>>((acc, match) => {
       if (!acc[match.homeTeamId]) {
         acc[match.homeTeamId] = [];
@@ -82,9 +82,9 @@ export const useTeamsStore = defineStore('teams', () => {
 
   return {
     teams,
-    teamsGrouped,
+    teamsNormalized,
     allMatches,
-    allMatchesGrouped,
+    allMatchesNormalized,
     isLoading,
     createMatch,
     editTeam,
