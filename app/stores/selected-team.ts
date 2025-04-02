@@ -2,7 +2,7 @@ import { defineStore } from 'pinia';
 import { ref } from 'vue';
 import type { TeamStats } from '~/types';
 
-export const useSelectedTeamStore = defineStore('teamId', () => {
+export const useSelectedTeamStore = defineStore('selected-team', () => {
   const { teamsGrouped, teams, allMatchesGrouped } = storeToRefs(
     useTeamsStore()
   );
