@@ -18,7 +18,7 @@
     <!-- Matches List -->
     <div v-else>
       <!-- Recent Form Display -->
-      <DetailsRecentFormDisplay :recent-form="selectedTeam.recentForm" />
+      <SharedRecentFormDisplay class="mb-6" label="Recent Form" :recent-form="selectedTeam.recentForm" />
       <!-- Match Statistics Summary -->
       <DetailsMatchStatisticsSummary :draws="selectedTeam.draws" :losses="selectedTeam.losses"
         :wins="selectedTeam.wins" />

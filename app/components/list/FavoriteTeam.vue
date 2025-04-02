@@ -8,7 +8,7 @@
         </div>
         <div v-else>
           <!-- Recent Form Display -->
-          <ListRecentFormDisplay class="mt-2" :match-results="matchResults" />
+          <SharedRecentFormDisplay class="mt-2" :recent-form="matchResults" />
           <!-- Recent Matches Table -->
           <SharedMatchesTable class="mt-6" :matches="favoriteTeamRecentMatches" />
         </div>
